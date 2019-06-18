@@ -1,2 +1,2 @@
 #!/bin/bash
-printf '%f/n' | find -empty ./*
+find -empty ./* | printf '%f/n'
