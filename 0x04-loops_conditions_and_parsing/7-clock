@@ -12,3 +12,4 @@ do
     done
     ((hours++))
 done
+echo "Hour:" $hours
