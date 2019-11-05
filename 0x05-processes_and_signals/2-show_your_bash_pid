@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #displays lines containing
-ps -u
+ps -aux -f | grep bash
 # shellcheck disable=SC2009
