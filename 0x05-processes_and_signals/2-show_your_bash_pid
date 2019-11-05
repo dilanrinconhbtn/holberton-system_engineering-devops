@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+#displays lines containing
 ps -u
 # shellcheck disable=SC2009
