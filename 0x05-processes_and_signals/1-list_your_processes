@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-ps -eLf
+ps -aux -f
