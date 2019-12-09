@@ -1,1 +1,1 @@
-This is mi second project in Holberton
+This repo have the projects about Devops.
