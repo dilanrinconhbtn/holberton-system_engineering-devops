@@ -1,3 +1,4 @@
+# Using Puppet, create a file in /tmp.
 file { '/tmp/holberton':
   path    => '/tmp/holberton', # path
   mode    => '0744',         # permissions
