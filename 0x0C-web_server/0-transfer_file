@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# script
+
+if [ $# -eq 4 ];then
+    scp -i "StrictHostKeyChecking=no" "$1" ubuntu@35.231.36.128:"$2":"$3":~/
+elif [ $# -le 3 ];then
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+fi
