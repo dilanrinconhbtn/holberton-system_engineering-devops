@@ -3,6 +3,6 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 echo "Holberton School" | sudo tee /var/www/html/index.html
-sudo sed -i "s/server_name _;/server_name;\nrewrite ^\/redirect_me https:\/\/github.com\/dilanrinconhbtn permanent;/" /etc/nginx/sites-available\
+sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/dilanrinconhbtn permanent;/" /etc/nginx/sites-available\
 /default
 sudo service nginx start
