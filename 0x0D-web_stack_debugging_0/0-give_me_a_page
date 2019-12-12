@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Script turn on apache
+service apache2 start
