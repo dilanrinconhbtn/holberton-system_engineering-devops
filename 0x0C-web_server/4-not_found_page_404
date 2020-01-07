@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Configure error page 404
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Holberton School" | sudo tee /var/www/html/index.html
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
+sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/dilanrinconhbtn permanent;\n\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
+sudo service nginx start
