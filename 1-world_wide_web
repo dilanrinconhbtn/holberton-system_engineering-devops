@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# function that verifies the subdomains
+func ()
+{
+    www="www"
+    lb="lb-01"
+    wb1="web-01"
+    wb2="web-02"
+    if [ "$#" -eq 1 ]; then
+        counter=0
+	while [ $counter -lt 4 ]
+    	do
+    	    if [ $counter -eq 0 ]; then
+		sub_domain=$www
+		var=$www"."$1
+	    elif [ $counter -eq 1 ]; then
+	        sub_domain=$lb
+		var=$lb"."$1
+	    elif [ $counter -eq 2 ]; then
+		sub_domain=$wb1
+		var=$wb1"."$1
+	    else
+		sub_domain=$wb2
+		var=$wb2"."$1
+	    fi
+	    type=$(dig "$var" |grep -A1 'ANSWER SECTION:'| grep "$1" |awk \{'print $4'\})
+	    destino=$(dig "$var" |grep -A1 'ANSWER SECTION:'| grep "$1" |awk \{'print $5'\})
+	    echo "The subdomain $sub_domain is a $type record and points to $destino"
+	    counter=$((counter + 1))
+	done
+    else
+	sub_domain=$2
+    	var=$2"."$1
+    	type=$(dig "$var" | grep -A1 'ANSWER SECTION:'| grep "$1" |awk \{'print $4'\})
+    	destino=$(dig "$var" |grep -A1 'ANSWER SECTION:'| grep "$1" |awk \{'print $5'\})
+    	echo "The subdomain $sub_domain is a $type record and points to $destino"
+    fi
+}
+
+if [ "$#" -ge 1 ]
+   then
+       if [ "$#" -gt 1 ]
+          then
+	        func "$1" "$2"
+       else
+          func "$1"
+    fi
+fi
