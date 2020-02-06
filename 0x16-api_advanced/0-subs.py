@@ -11,7 +11,7 @@ def number_of_subscribers(subreddit):
     request = requests.get('https://api.reddit.com/r/{}/about'.
                            format(subreddit),
                            headers=headers)
-    if subRinfo.status_code == 404:
+    if request.status_code == 404:
         return 0
     subs = request.join()
     sub = subs['data']['subscribers']
