@@ -5,13 +5,15 @@ import requests
 
 def number_of_subscribers(subreddit):
     """ number of subs"""
-
-    headers = {"User-Agent": "dilanrincon"}
-    request = requests.get('https://api.reddit.com/r/{}/about'.
-                            format(subreddit),
-                            headers=headers)
-    if request.status_code == 404:
+    if subreddit is None or type(subreddit) is not str:
         return 0
-    subs = request.join()
-    sub = subs['data']['subscribers']
-    return sub
+    try:
+        headers = {"User-Agent": "dilanrincon"}
+        request = requests.get('https://api.reddit.com/r/{}/about'.
+                                format(subreddit),
+                                headers=headers)
+        subs = request.join()
+        sub = subs['data']['subscribers']
+        return sub
+    except:
+        return 0
