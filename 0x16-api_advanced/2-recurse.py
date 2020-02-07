@@ -10,11 +10,11 @@ def recurse(subreddit, hot_list=[], next_pg=None):
     if next_pg:
         request = requests.get('https://reddit.com/r/' +
                                subreddit +
-                               '/hot.json?after=' + 
+                               '/hot.json?after=' +
                                next_pg,
                                headers=headers)
     else:
-        request = requests.get('https://reddit.com/r/' + 
+        request = requests.get('https://reddit.com/r/' +
                                subreddit +
                                '/hot.json',
                                headers=headers)
